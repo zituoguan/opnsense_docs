@@ -1,5 +1,5 @@
 ====================================
-Reporting
+报告
 ====================================
 
 .. image:: images/freelance-graphs-laptop-34069.jpg
@@ -7,8 +7,8 @@ Reporting
     :align: center
 
 
-Your firewall collects quite some information about its health and workload, the reporting section will provide insights
-into these.
+您的防火墙收集了大量关于其健康状态和工作负载的信息，
+报告部分将提供这些信息的洞察。
 
 ----------------
 
@@ -24,7 +24,7 @@ into these.
    manual/reporting_unbound_dns
 
 ---------------
-Setup guides
+设置指南
 ---------------
 
 .. toctree::

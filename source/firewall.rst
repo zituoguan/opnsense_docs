@@ -1,5 +1,5 @@
 ====================================
-Firewall
+防火墙
 ====================================
 
 .. image:: images/architecture-buildings-city-327345.jpg
@@ -7,8 +7,8 @@ Firewall
     :align: center
 
 
-To manage traffic flowing through your security appliance, a broad range of filtering and shaping features is available.
-These are all combined in the firewall section.
+为了管理通过您的安全设备流动的流量，提供了广泛的过滤和整形功能。
+这些功能都集成在防火墙部分中。
 
 ----------------
 
@@ -32,7 +32,7 @@ These are all combined in the firewall section.
 
 
 ---------------
-Setup guides
+设置指南
 ---------------
 
 .. toctree::

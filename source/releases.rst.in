@@ -8,8 +8,8 @@
     :width: 600px
     :align: center
 
-As of January 2015 there have been *{{ versions|length }}* releases leading to the latest version *{{ versions|first }}*
-named "{{nicknames.items()|list|first|last}}".
+自 2015 年 1 月以来，已经发布了 *{{ versions|length }}* 个版本，最新版本为 *{{ versions|first }}*，
+名为 "{{nicknames.items()|list|first|last}}”。
 
 {% elif prefix == 'BE' %}
 
@@ -17,13 +17,13 @@ named "{{nicknames.items()|list|first|last}}".
     :width: 600px
     :align: center
 
-OPNsense Business Edition is intended for companies, enterprises and professionals looking for a more
-selective upgrade path (lags behind the community edition), additional commercial features and who want to
-support the project in a more commercial way compared to donating.
+OPNsense 商业版面向寻求更选择性升级路径（落后于社区版）、
+附加商业功能的公司、企业和专业人士，
+并希望以更商业化的方式支持项目，相较于捐赠而言。
 
 {% endif %}
 
-The list below contains all releases, ordered by version number categorized by major version.
+下面的列表包含了所有发布版本，按版本号排序，并按主要版本分类。
 
 .. toctree::
    :maxdepth: 2

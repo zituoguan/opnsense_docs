@@ -1,13 +1,13 @@
 ====================================
-Installation and setup
+安装和设置
 ====================================
 
 .. image:: images/architect-architecture-black-and-white-1537008.jpg
     :width: 600px
     :align: center
 
-When your device wasn't shipped with OPNsense® `pre-installed <https://www.deciso.com/product-catalog/>`__,
-you can find how to install it yourself and which hardware platforms are supported in this chapter.
+当您的设备没有预装 OPNsense® `预装 <https://www.deciso.com/product-catalog/>`__ 时，
+您可以在本章中找到如何自行安装以及哪些硬件平台得到支持的信息。
 
 
 ----------------
@@ -25,7 +25,7 @@ you can find how to install it yourself and which hardware platforms are support
 
 
 ---------------
-Setup guides
+设置指南
 ---------------
 
 .. toctree::

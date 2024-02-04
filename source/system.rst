@@ -1,5 +1,5 @@
 ====================================
-System
+系统
 ====================================
 
 .. image:: images/control-data-device-270700.jpg
@@ -7,9 +7,9 @@ System
     :align: center
 
 
-The system section in the menu houses all general settings for your firewall needed for its operation.
-This includes options like administrative access, network routing and diagnostics features to debug your devices current
-activities.
+菜单中的系统部分包含了防火墙运行所需的所有一般设置。
+这包括诸如管理访问、网络路由以及用于调试设备当前活动的诊断功能
+等选项。
 
 ----------------
 
@@ -31,7 +31,7 @@ activities.
 
 
 ---------------
-Setup guides
+设置指南
 ---------------
 
 .. toctree::

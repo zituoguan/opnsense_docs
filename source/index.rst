@@ -1,21 +1,21 @@
-.. OPNsense documentation master file
+.. OPNsense文档主文件
 
 .. image:: ./images/opnsense_logo-zilver_grijs.png
 
 -----------------
 
 ====================================
-Welcome to OPNsense's documentation!
+欢迎来到OPNsense文档！
 ====================================
-`OPNsense® <https://opnsense.org>`__ is an open source,
-easy-to-use and easy-to-build FreeBSD based firewall and routing platform.
+`OPNsense® <https://opnsense.org>`__ 是一个开源的、
+易于使用和构建的基于FreeBSD的防火墙和路由平台。
 
-**OPNsense** includes most of the features available in expensive commercial
-firewalls, and more in many cases. It brings the rich feature set of commercial
-offerings with the benefits of open and verifiable sources.
+**OPNsense** 包括大多数昂贵商业防火墙中可用的功能，
+而且在许多情况下还包括更多功能。
+它将商业产品的丰富功能集与开放和可验证的源代码的优势相结合。
 
 -----------------
-Table of Contents
+目录
 -----------------
 
   .. toctree::

@@ -1,5 +1,5 @@
 ====================================
-Lobby
+大厅
 ====================================
 
 .. image:: images/architecture-building-ceiling-lamp-260931.jpg
@@ -7,8 +7,8 @@ Lobby
     :align: center
 
 
-The lobby is the entrance to your (virtual) security appliance, where you can find your dashboard, change your password
-and end your session. After initial installation, this is the first place you will visit.
+大厅是您的（虚拟）安全设备的入口，您可以在这里找到您的仪表盘，更改密码
+和结束会话。在初次安装后，这是您将访问的第一个地方。
 
 ----------------
 

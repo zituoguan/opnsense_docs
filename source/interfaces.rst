@@ -1,5 +1,5 @@
 ====================================
-Interfaces
+接口
 ====================================
 
 .. image:: images/blur-close-up-connection-1624895.jpg
@@ -7,7 +7,7 @@ Interfaces
     :align: center
 
 
-All traffic flowing through your appliance is using (virtual) interfaces, this is where you manage most settings.
+通过您的设备流动的所有流量都使用（虚拟）接口，这是您管理大多数设置的地方。
 
 ----------------
 
@@ -27,7 +27,7 @@ All traffic flowing through your appliance is using (virtual) interfaces, this i
    manual/logging_interfaces
 
 ---------------
-Setup guides
+设置指南
 ---------------
 
 .. toctree::

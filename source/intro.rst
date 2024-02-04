@@ -1,158 +1,158 @@
 ============
-Introduction
+简介
 ============
 
-Welcome to the OPNsense documentation & wiki project!
-The documentation is work in progress and is updated frequently.
-If you would like to contribute in anyway, please take a look at our guide
-how to :doc:`contribute`.
+欢迎来到 OPNsense 文档与 wiki 项目！
+本文档仍在完善中，并会频繁更新。
+如果您想以任何方式做出贡献，请查看我们的指南
+如何 :doc:`贡献`。
 
 .. image:: ./images/opnsense_logo-zilver_grijs.png
 
 ------------------------------------
-Welcome to OPNsense's documentation!
+欢迎阅读 OPNsense 的文档！
 ------------------------------------
-`OPNsense® <https://opnsense.org>`__ is an open source,
-easy-to-use and easy-to-build FreeBSD based firewall and routing platform.
+`OPNsense® <https://opnsense.org>`__ 是一个开源、
+易于使用且易于构建的基于 FreeBSD 的防火墙和路由平台。
 
-**OPNsense** includes most of the features available in expensive commercial
-firewalls, and more in many cases. It brings the rich feature set of commercial
-offerings with the benefits of open and verifiable sources.
+**OPNsense** 包含了许多昂贵商业防火墙的功能，
+而且在很多情况下功能更加丰富。
+它结合了商业产品的丰富功能集和开放且可验证的源代码的好处。
 
 -----------------
-Mission Statement
+使命声明
 -----------------
 
-  Give users, developers and businesses a friendly, stable and transparent
-  environment. Make OPNsense the most widely used open source security platform.
-  The project’s name is derived from open and sense and stands for:
-  “Open (source) makes sense.”
+为用户、开发者和企业提供一个友好、稳定和透明的环境。
+使 OPNsense 成为最广泛使用的开源安全平台。
+该项目的名称源自 open（开放）和 sense（感知），
+代表着：“开源是有意义的。”
 
 
 .. image:: ./images/OPNsense-Deciso-Screenshot.jpg
 
 
 -----------------
-Reading guide
+阅读指南
 -----------------
 
-While reading the documentation, it's good to know how the various topics are structured, what their purpose is and how
-to find what you're looking for. Maybe even more important is what this documentation doesn't offer.
+阅读文档时，了解各个主题的结构、目的以及如何找到您正在寻找的内容是很有帮助的。
+或许更重要的是，这份文档不提供什么。
 
-If you're looking for deeper insights about networking and best practices in designing them, this might not be the best
-place to look. Most of our documents and how-to's focus on how to use functionality included in our software and/or one
-of it's plugins. Quite some books are written about networking, there are (online) courses available and wikipedia
-contains a lot of relevant articles as well. Some interesting reads include the fundamentals about the
-`OSI model <https://en.wikipedia.org/wiki/OSI_model>`__, `IP addressing <https://en.wikipedia.org/wiki/IP_address>`__,
-`routing <https://en.wikipedia.org/wiki/IP_routing>`__ and `network address translation <https://en.wikipedia.org/wiki/Network_address_translation>`__.
-Likely these resources are more suitable for learning about general network concepts.
-Although we do try to include some context in our documents, there are often assumptions made about the readers
-knowledge on (basic) networking.
+如果您正在寻找关于网络及其设计最佳实践的更深入见解，这可能不是最佳的查找地点。
+我们的大多数文档和操作指南主要关注如何使用我们软件及其插件中包含的功能。
+有关网络的书籍有很多，也有（在线）课程可供学习，维基百科也包含了很多相关文章。
+一些有趣的阅读包括关于
+`OSI 模型 <https://en.wikipedia.org/wiki/OSI_model>`__、`IP 地址 <https://en.wikipedia.org/wiki/IP_address>`__、
+`路由 <https://en.wikipedia.org/wiki/IP_routing>`__ 和 `网络地址转换 <https://en.wikipedia.org/wiki/Network_address_translation>`__ 的基础知识。
+这些资源更适合学习一般网络概念。
+虽然我们确实试图在文档中提供一些背景，
+但经常会假设读者对（基本的）网络知识有所了解。
 
-Like many products and projects, ours grows over time, functionality extends and changes, which sometimes makes it difficult
-to find what you need for the version you're using. Although we try to keep our documentation up to date, sometimes text
-doesn't reflect reality anymore. If that's the case and you think you found an omission, don't hestitate to open
-a report using one of our templates on `GitHub <https://github.com/opnsense/docs/issues/new/choose>`__ or a pull request
-of course if you're able to.
+像许多产品和项目一样，
+我们的产品随着时间的推移而成长，
+功能不断扩展和变化，这有时会使得找到您正在使用的版本所需的内容变得困难。
+虽然我们努力保持文档的最新状态，有时文本可能不再反映现实。
+如果是这种情况，并且您认为发现了遗漏，请不要犹豫，使用我们在 `GitHub <https://github.com/opnsense/docs/issues/new/choose>`__ 上的模板之一开启一个报告，或者如果您能够的话，当然也可以发起一个拉取请求（pull request）。
 
-Always assume the text is intended for the latest version of our product, in time we might
-add a version selector in the documentation, but given OPNsense is a security product, we advise to keep it up to date
-anyway to protect yourself against the latest threats.
+始终假设文本是针对我们产品的最新版本，随着时间的推移，
+我们可能会在文档中添加版本选择器，但鉴于 OPNsense 是一个安全产品，
+我们建议无论如何都保持更新，以保护自己免受最新威胁的侵害。
 
-The releases section contains the changelogs for all versions we published over the years, if there are remarks
-for an upgrade, this is a useful resource to collect the details.
+发布部分包含了我们多年来发布的所有版本的变更日志，
+如果有关于升级的备注，这是收集细节的有用资源。
 
-Installation and setup is all about getting you started using one of the target options available.
+安装和设置旨在帮助您开始使用可用的目标选项之一。
 
-The next sections should be quite familiair when working with OPNsense, as they reflect the options in the
-menu of the product. In case you're not yet used to OPNsense, you can always use the search input in the left corner of
-the screen to find your topic.
+接下来的部分在使用 OPNsense 时应该会感到相当熟悉，
+因为它们反映了产品菜单中的选项。如果您还不习惯使用 OPNsense，
+您可以随时使用屏幕左上角的搜索框来查找您的主题。
 
-Both community and third-party plugins have their own area available, although they eventually register into the
-same menu structure, it's good to know about possible differences between add-ons and standard functionality.
-The level of support may differ between core functionality, as also explained in the "Support options" section,
-feature requests and bugs maybe treated different as well (a lot of questions for a plugin which is being developed
-by a single person, maybe less active than a group of people improving a plugin together for example).
+社区和第三方插件各有其专属区域，尽管它们最终都注册在相同的菜单结构中，
+了解附加组件和标准功能之间可能存在的差异是很重要的。
+核心功能的支持级别可能会有所不同，正如“支持选项”部分所解释的那样，
+功能请求和错误处理也可能有所不同（例如，一个正在由个人开发的插件，
+可能没有一群人共同改进一个插件那么活跃）。
 
-When it comes to building software on top of OPNsense or extending existing functionality, the development
-chapter is the one to read. It explains all about our architecture, coding style, how to hook into available facilities and
-much more.
+当谈到在 OPNsense 之上构建软件或扩展现有功能时，开发章节是必读的。
+它解释了我们的架构、编码风格、如何接入现有设施以及
+更多内容。
 
-Some pointers when it comes to troubleshooting can be found in the section with the same name, it explains a bit
-about our issue workflow and some tips we collected over the years.
+关于故障排除的一些建议可以在同名部分找到，
+它简要介绍了我们的问题处理流程和多年来收集的一些技巧。
 
-Last but not least our documentation includes some pages around project relations, legal guidelines and
-ways to contribute to the project.
+最后但同样重要的是，我们的文档还包括了一些关于项目关系、法律指南和
+如何为项目做出贡献的页面。
 
 
 -------------------
 
 -----------
-Feature set
+功能集
 -----------
 
-The feature set of OPNsense includes high-end features such as forward caching
-proxy, traffic shaping, intrusion detection and easy OpenVPN client setup.
-The latest release is based on a recent FreeBSD for long-term support and uses a
-newly developed MVC-framework based on Phalcon. OPNsense’s focus on security
-brings unique features such as easy to use one time password authentication for various components.
+OPNsense 的功能集包括高端特性，
+如前向缓存代理、流量整形、入侵检测以及简易的 OpenVPN 客户端设置。
+最新发布的版本基于最近的 FreeBSD，
+提供长期支持，并使用基于 Phalcon 的新开发的 MVC 框架。
+OPNsense 对安全的专注带来了独特的特性，比如为各种组件提供易于使用的一次性密码认证。
 
-The robust and reliable update mechanism gives OPNsense the ability to provide
-important security updates in a timely fashion.
-
-----------------------
+强大且可靠的更新机制赋予了 OPNsense 及时提供
+重要安全更新的能力。
 
 ----------------------
-OPNsense Core Features
+
+----------------------
+OPNsense 核心特性
 ----------------------
 
-- Traffic Shaper
-- Captive portal
+- 流量整形器
+- 捕获门户
 
-  - Voucher support
-  - Template manager
-  - Multi zone support
+  - 支持凭证
+  - 模板管理
+  - 多区域支持
 
-- Forward Caching Proxy
+- 前向缓存代理
 
-  - Transparent mode supported
-  - Blacklist support
+  - 支持透明模式
+  - 黑名单支持
 
-- Virtual Private Network
+- 虚拟私人网络
 
-  - Site to site
-  - Road warrior
+  - 站点到站点
+  - 巡游战士
   - IPsec
   - OpenVPN
 
-- High Availability & Hardware Failover
+- 高可用性 & 硬件故障转移
 
-  - Includes configuration synchronization & synchronized state tables
-  - Moving virtual IPs
+  - 包括配置同步和状态表同步
+  - 移动虚拟 IP
 
-- Intrusion Detection and Inline Prevention
+- 入侵检测和内联预防
 
-  - Built-in support for Emerging Threats rules
-  - Simple setup by use of rule categories
-  - Scheduler for period automatic updates
+  - 内置对 Emerging Threats 规则的支持
+  - 通过使用规则类别简化设置
+  - 定期自动更新的计划任务
 
-- Built-in reporting and monitoring tools
+- 内置报告和监控工具
 
-  - System Health, the modern take on RRD Graphs
-  - Packet Capture
+  - 系统健康，对 RRD 图表的现代化处理
+  - 数据包捕获
   - Netflow
 
-- Support for plugins
-- DNS Server & DNS Forwarder
-- DHCP Server and Relay
-- Dynamic DNS
-- Backup & Restore
+- 插件支持
+- DNS 服务器 & DNS 转发器
+- DHCP 服务器和中继
+- 动态 DNS
+- 备份与恢复
 
-  - Encrypted cloud backup to Google Drive and Nextcloud
-  - Configuration history with colored diff support
-  - Local drive backup & restore
+  - 支持加密云备份到 Google Drive 和 Nextcloud
+  - 配置历史与彩色差异支持
+  - 本地驱动器备份与恢复
 
-- Stateful inspection firewall
-- Granular control over state table
-- 802.1Q VLAN support
-- and more…
+- 状态检查防火墙
+- 对状态表的精细控制
+- 802.1Q VLAN 支持
+- 等等…

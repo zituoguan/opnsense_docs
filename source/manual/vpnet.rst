@@ -1,28 +1,28 @@
 ==========================
-Virtual Private Networking
+虚拟私人网络
 ==========================
 
-A virtual private network secures public network connections and in doing so it
-extends the private network into the public network such as internet. With a VPN
-you can create large secure networks that can act as one private network.
+虚拟私人网络通过保护公共网络连接来扩展私有网络至公共网络，如互联网。
+通过 VPN，您可以创建大型的安全网络，
+这些网络可以充当一个私有网络。
 
 .. image:: images/Virtual_Private_Network_overview.png
     :width: 100%
 
-(picture from `wikipedia <https://en.wikipedia.org/wiki/File:Virtual_Private_Network_overview.svg>`__)
+（图片来自 `wikipedia <https://en.wikipedia.org/wiki/File:Virtual_Private_Network_overview.svg>`__）
 
-Companies use this technology for connecting branch offices and remote users
-(road warriors).
+公司使用这项技术连接分支机构和远程用户
+（公路战士）。
 
-OPNsense supports VPN connections for branch offices as well as remote users.
+OPNsense 支持为分支机构以及远程用户提供 VPN 连接。
 
-Creating a single secured private network with multiple branch offices connecting
-to a single site can easily be setup from within the graphical user interface.
-For remote users, certificates can be created and revoked and a simple to use export
-utility makes the client configuration a breeze.
+通过图形用户界面，
+可以轻松设置创建一个包含多个分支机构连接到单一站点的单一安全私有网络。
+对于远程用户，可以创建和吊销证书，
+且一个易于使用的导出工具使得客户端配置变得非常简单。
 
-OPNsense offers a wide range of VPN technologies ranging from modern SSL VPNs to
-well known IPsec as well as WireGuard and Zerotier via the use of plugins.
+OPNsense 提供了广泛的 VPN 技术范围，从现代 SSL VPN 到众所周知的 IPsec，
+以及通过插件使用的 WireGuard 和 Zerotier。
 
 .. image:: images/vpn.png
     :width: 30%
@@ -31,254 +31,254 @@ well known IPsec as well as WireGuard and Zerotier via the use of plugins.
 IPsec
 --------------------------
 
-Since IPsec is used in many different scenario's and sometimes has the tendency to be a bit complicated, we
-will describe different usecases and provide some examples in this chapter.
+由于 IPsec 在许多不同的场景中被使用，有时可能会有点复杂，
+我们将在本章描述不同的使用案例并提供一些示例。
 
 .................................
-General context
+一般背景
 .................................
 
-The IPsec module incorporates different functions, which are grouped into various menu items. Since the start of our
-project we have been offering IPsec features based on the legacy :code:`ipsec.conf` format, which we are migrating to
-`swantcl.conf <https://docs.strongswan.org/docs/5.9/swanctl/swanctlConf.html>`__ as of version 23.1. While
-migrating the existing featureset we came to the conclusion that the world has changed quite a bit and in order to
-offer better (api) access to the featureset available we decided to plan for deprecation of the legacy "Tunnel settings" as they
-have existed since we started. No timeline has been set, only a feature freeze on tunnels using the "Tunnel settings" menu item.
+IPsec 模块结合了不同的功能，这些功能被分组到各种菜单项中。
+从我们项目开始，我们就基于传统的 :code:`ipsec.conf` 格式提供 IPsec 功能，从 23.1 版本开始，
+我们正在迁移到 `swantcl.conf <https://docs.strongswan.org/docs/5.9/swanctl/swanctlConf.html>`__。
+在迁移现有功能集时，我们得出结论，世界已经发生了很大的变化，
+为了提供更好的（API）访问可用的功能集，我们决定计划淘汰自项目开始以来就存在的传统“隧道设置”。
+没有设定时间表，只是对使用“隧道设置”菜单项的隧道实施了功能冻结。
 
-One of the main goals for the long run is to better align the gui components so they reflect the reality underneath, as we use
-`strongswan <https://www.strongswan.org/>`__, our aim is to follow their terminology more closely than we previously did.
+从长远来看，我们的主要目标之一是更好地对齐 GUI 组件，使其更真实地反映底层的现实，
+因为我们使用 `strongswan <https://www.strongswan.org/>`__，我们的目标是比以前更紧密地遵循他们的术语。
 
-The following functions are available in the menu (as of OPNsense 23.1):
+以下功能在菜单中可用（截至 OPNsense 23.1）：
 
-* Connections
+* 连接
 
-  * New configuration tool offering access to the connections and pools sections of the :code:`swanctl` configuration
+  * 新的配置工具，提供对 :code:`swanctl` 配置的连接和池部分的访问
 
-* Tunnel Settings
+* 隧道设置
 
-  * Legacy IPsec configuration tool
+  * 传统 IPsec 配置工具
 
-* Mobile Clients
+* 移动客户端
 
-  * Offering access to various options of the `attr <https://docs.strongswan.org/docs/5.9/plugins/attr.html>`__ plugin and pool configurations for legacy tunnels
+  * 提供对 `attr <https://docs.strongswan.org/docs/5.9/plugins/attr.html>`__ 插件和传统隧道的池配置的各种选项的访问
 
-* Pre-Shared Keys
+* 预共享密钥
 
-  * Define `secrets <https://docs.strongswan.org/docs/5.9/swanctl/swanctlConf.html#_secrets>`__ to be used for local authentication.
+  * 定义用于本地认证的 `secrets <https://docs.strongswan.org/docs/5.9/swanctl/swanctlConf.html#_secrets>`__
 
-* Key Pairs
+* 密钥对
 
-  * For public key authentication collect public and private keys.
+  * 收集用于公钥认证的公钥和私钥。
 
-* Advanced Settings
+* 高级设置
 
-  * Define passthrough networks (to exclude from kernel traps), logging options and some generic options
+  * 定义穿透网络（从内核陷阱中排除），日志选项和一些通用选项
 
-* Status Overview
+* 状态概览
 
-  * Shows tunnel statusses
+  * 显示隧道状态
 
-* Lease Status
+* 租约状态
 
-  * For mobile clients, show address leases for various pools configured
+  * 对于移动客户端，显示配置的各种池的地址租约
 
-* Security Association Database
+* 安全关联数据库
 
-  * Shows security associations, the fundamental concept of IPsec describing a relationship between two or more entities
+  * 显示安全关联，IPsec 描述两个或更多实体之间关系的基本概念
 
-* Security Policy Database
+* 安全策略数据库
 
-  * Installed security policies describing which traffic is allowed to pass a tunnel
+  * 安装的安全策略描述哪些流量被允许通过隧道
 
-* Virtual Tunnel Interfaces
+* 虚拟隧道接口
 
-  * Edit or create new :code:`if_ipsec(4)` interfaces and show the ones created by legacy tunnels
+  * 编辑或创建新的 :code:`if_ipsec(4)` 接口并显示由传统隧道创建的接口
 
-* Log File
+* 日志文件
 
-  * Inspect log entries related to IPsec
+  * 检查与 IPsec 相关的日志条目
 
 
 
-Migrating from tunnels to connections
+将文档从隧道迁移到连接
 -------------------------------------------
 
-Having used the tunnel settings from the early OPNsense days, some terminology might be a bit confusing when moving into the new options offered.
-This paragraph aims to explain some of the common terms from the tunnel section and their new place in the connections.
-For a full list of changes, the upstream migration `documentation <https://wiki.strongswan.org/projects/strongswan/wiki/Fromipsecconf>`__
-is an interesting read as well.
+自OPNsense早期以来，已经使用隧道设置，
+当转向提供的新选项时，一些术语可能会有些混淆。
+本段旨在解释隧道部分的一些常见术语及它们在连接中的新位置。
+要了解全部更改列表，上游迁移文档是一个有趣的阅读资源。
 
 
-* Phase 1 - The general connection settings, like local/remote addressess and general protocol settings. Choices in authentication to use
-  are also part of this, they may involve multiple rounds.
-* Phase 2 - Nowadays Strongswan calls these **children**, as these define the :code:`CHILD_SA` subsections in play. This is where you can define
-  the networks on both ends. When multiple segments are being added into the same child, these are being treated as one policy
-  where all of them are able to communicate to eachother.
-* Phase 1 / Tunnel Isolation - This option made sure every network defined in phase 2 would be treated as a child of it's own (e.g. two phase 2's would turn into two children)
-* Phase 2 / Manual SPD entries - Manual SPD entries, this has been replaced with it's own menu option (Security Policy Database)
-  offering more flexibilty and visibilty.
+* 第1阶段 - 一般连接设置，如本地/远程地址和一般协议设置。
+  选择使用的认证方式也是其中的一部分，它们可能涉及多轮。
+* 第2阶段 - 现在Strongswan将这些称为**子项**，因为这些定义了正在使用的`:code:CHILD_SA`子部分。
+  这是您可以定义两端网络的地方。
+  当多个段被添加到同一个子项中时，这些被视为一个策略，其中所有的部分都能彼此通信。
+* 第1阶段/隧道隔离 - 此选项确保在第2阶段定义的每个网络都被视为其自己的子项（例如，两个第2阶段会变成两个子项）
+* 第2阶段/手动SPD条目 - 手动SPD条目，这已经被替换为它自己的菜单选项（安全策略数据库），
+  提供更多的灵活性和可见性。
 
-.. Note::
+.. 注意::
 
-  Using DNS for endpoints is possible, but will work a bit different than previously as in most cases the firewall tried to
-  resolve the names and didn't use the functionality provided by Strongswan. It is however currently not possible to use DNS entries
-  for VTI tunnels due to restrictions in `if_ipsec(4)` as these type of interfaces can't be changed dynamically in a reliable way.
+  使用DNS作为端点是可能的，但与之前有些不同，因为在大多数情况下，
+  防火墙尝试解析名称并没有使用Strongswan提供的功能。
+  然而，由于`if_ipsec(4)`的限制，目前无法为VTI隧道使用DNS条目，因为这种类型的接口不能以可靠的方式动态更改。
 
-.. Note::
+.. 注意::
 
-  When migrating Pre-Shared Key type tunnels to connections, make sure to add an entry in the "Pre-Shared Keys" module as well.
-  If both ends should use their own identifier, fill in both local and remote values. The legacy module requested this information in the phase 1
-  page and wrote the same information to the secrets.
+  当将预共享密钥类型隧道迁移到连接时，也确保在“预共享密钥”模块中添加一个条目。
+  如果两端应使用各自的标识符，请填写本地和远程值。
+  旧模块在第1阶段页面请求此信息，并将相同的信息写入到秘密中。
 
-.. Tip::
+.. 提示::
 
-  Since OPNsense uses the new Strongswan format also for legacy tunnels, it is rather easy to convert a tunnel manually
-  when downloading the :code:`swanctf.conf` file from the machine. You can find it in :code:`/usr/local/etc/swanctl/swanctl.conf`
-  and the format is almost identical to the connections gui available in OPNsense.
+  由于OPNsense也为传统隧道使用新的Strongswan格式，
+  因此当从机器下载:code:`swanctl.conf`文件时，手动转换一个隧道相对容易。你可以在:code:`/usr/local/etc/swanctl/swanctl.conf`中找到它，
+  其格式几乎与OPNsense中可用的连接GUI相同。
 
 
-Combining legacy tunnels and connections
+结合传统隧道和连接
 -------------------------------------------
 
-It is possible to combine tunnels and connections, but there are some constraints. As our legacy tunnels force a :code:`reqid`
-for each configured child (phase 2), there is a risk the automated numbering from the new connection children overlaps.
-To prevent these overlaps, its required to set an unused :code:`reqid` in the connection child.
+结合使用隧道和连接是可能的，但存在一些限制。
+由于我们的传统隧道为每个配置的子项（第2阶段）强制一个
+:code:`reqid`，新连接子项的自动编号有重叠的风险。为了防止这些重叠，需要在连接子项中设置一个未使用的:code:`reqid`。
 
 
 
 .................................
-Security policies and routing
+安全策略和路由
 .................................
 
-In order to pass traffic over an IPsec tunnel, we need a policy matching the traffic. By default when adding a phase 2 (or child) policy
-a "kernel route" is installed as well, which traps traffic before normal routing takes place.
+为了通过IPsec隧道传输流量，我们需要一个匹配流量的策略。
+默认情况下，添加第2阶段（或子项）策略时，也会安装一个“内核路由”，它在正常路由发生之前捕获流量。
 
-.. Note::
+.. 注意::
 
-  Without a policy in place for the tunnel, traffic won't be accepted, in case a policy with a kernel route overlaps a local or locally routed network
-  the traffic will not be received by the host in question.
+  如果没有为隧道设置策略，流量将不会被接受，
+  如果带有内核路由的策略与本地或本地路由网络重叠，那么流量将不会被有问题的主机接收。
 
-.. Tip::
+.. 提示::
 
-  When matching overlapping networks in a policy (VTI or overlapping networks), make sure to exclude your own network segments in the
-  :code:`Passthrough networks` option in :menuselection:`VPN -> IPsec -> Advanced Settings` to prevent traffic being blackholed.
-
-
-.................................
-Firewall rules
-.................................
-
-When using the legacy tunnels and :code:`Disable Auto-added VPN rules` is not checked in :menuselection:`VPN --> IPsec --> Advanced Settings`
-some automatic firewall rules are created for remote hosts connecting to this one.
-The new connections feature does not offer this and (WAN) rules have to be specified manually in order to connect to IPsec on this host.
-
-The relevant protocols and ports for IPsec are the following:
-
-* Protocol: ESP (https://en.wikipedia.org/wiki/IPsec#Encapsulating_Security_Payload)
-* Port: 500/UDP (https://en.wikipedia.org/wiki/Internet_Security_Association_and_Key_Management_Protocol)
-* Port: 4500/UDP (https://en.wikipedia.org/wiki/NAT_traversal#IPsec)
-
-.. Note::
-
-  One of the main reasons we are not offering automatic rules is that their either more open than expected (allow IPsec from anywhere)
-  or too closed as the rule engine will "guess" the remote endpoint (in case of a fqdn).
-
-
-The default behavior of our firewall is to block inbound traffic, which also means traffic using the tunnel should
-be allowed explicitly, the :menuselection:`Firewall --> Rules --> IPsec` menu items offer access to the IPsec traffic policies.
+  在策略中匹配重叠网络（VTI或重叠网络）时，确保在:menuselection:`VPN -> IPsec -> 高级设置`中
+  的:code:`Passthrough networks`选项中排除自己的网络段，以防止流量被黑洞吞噬。
 
 
 .................................
-Dead Peer Detection (DPD)
+防火墙规则
 .................................
 
-Dead Peer Detection (DPD) is a method of detecting a dead IKE peer by sending periodic R-U-THERE messages to the remote expecting R-U-THERE-ACK
-messages in return as specified by `RFC 3706 <https://www.ietf.org/rfc/rfc3706.txt>`__.
+当使用传统隧道且在:menuselection:`VPN --> IPsec --> 高级设置`中未选中`:code:Disable Auto-added VPN rules`时，
+会为连接到此主机的远程主机自动创建一些防火墙规则。
+新的连接功能不提供此项，必须手动指定（WAN）规则以便能够连接到此主机上的IPsec。
 
-When a peer is assumed dead, an action may be specified, such as closing the CHILD_SA or re-negotiate the CHILD_SA under a fresh IKE_SA.
+IPsec相关的协议和端口包括以下内容：
 
-.. Note::
+- 协议：ESP (https://en.wikipedia.org/wiki/IPsec#Encapsulating_Security_Payload)
+- 端口：500/UDP (https://en.wikipedia.org/wiki/Internet_Security_Association_and_Key_Management_Protocol)
+- 端口：4500/UDP (https://en.wikipedia.org/wiki/NAT_traversal#IPsec)
 
-  DPD is disabled by default, when using connections, make sure to specify a :code:`DPD delay (s)` > 0 to enable the feature.
-  Actions may be specified on its children.
+.. 注意::
+
+  我们不提供自动规则的主要原因之一是，这些规则要么比预期的更开放（允许来自任何地方的IPsec），
+  要么因为规则引擎会“猜测”远程端点（如果是fqdn）而过于封闭。
+
+
+我们防火墙的默认行为是阻止入站流量，这也意味着使用隧道的流量应该被明确允许，
+:menuselection:`防火墙 --> 规则 --> IPsec` 菜单项提供了访问IPsec流量策略的途径。
 
 
 .................................
-Implementation schemes
+死对等检测（DPD）
 .................................
 
-When setting up IPsec VPNs there are two main types of scenario's with their own advantages and disadvantages.
+死对等检测（DPD）是一种通过向远程发送周期性的R-U-THERE消息并期待返回R-U-THERE-ACK消息
+来检测一个IKE对等体是否失效的方法，如`RFC 3706 <https://www.ietf.org/rfc/rfc3706.txt>`__所指定。
 
-Policy based
+当一个对等体被认为已失效时，可以指定一个动作，比如关闭CHILD_SA或在新的IKE_SA下重新协商CHILD_SA。
+
+.. 注意::
+
+  默认情况下DPD是禁用的，使用连接时，确保指定一个大于0的
+  :code:`DPD delay (s)`来启用此功能。可以在其子项上指定动作。
+
+
+.................................
+实施方案
+.................................
+
+在设置IPsec VPN时，有两种主要的场景类型，它们各自有优缺点。
+
+基于策略的
 --------------------------
 
-The first one is the standard policy based tunnel, which guards the security of the tunnel with policies and installs kernel
-traps to send traffic over the tunnel in case it matches these policies. For example a local network :code:`192.168.1.0/24`
-sending traffic to a remote location responsible for :code:`192.168.2.0/24`. The advantage of this scenario is the ease of setup,
-no routes are needed to be configured, when in this example :code:`192.168.1.10` contacts :code:`192.168.2.10` the packets
-are seamlessly forwarded over the tunnel to the remote location.
+第一种是标准的基于策略的隧道，它通过策略保护隧道的安全，
+并安装内核陷阱，
+在流量匹配这些策略的情况下通过隧道发送流量。
+例如一个本地网络:code:`192.168.1.0/24`向负责:code:`192.168.2.0/24`的远程位置发送流量。这种场景的优点是设置简单，无需配置路由，在此例中:code:`192.168.1.10`联系:code:`192.168.2.10`时，
+数据包会无缝地通过隧道转发到远程位置。
 
-When local traffic doesn't match the policies in question due to the tunnel needing Network Address Translation,
-that's also possible as long as policies are manually added to the security policy database,
-this is also referred to as "NAT before IPsec".
+当本地流量由于隧道需要网络地址转换而不匹配有关策略时，
+只要手动添加策略到安全策略数据库，也是可能的，
+这也被称为“IPsec之前的NAT”。
 
 
-Route based (VTI)
+基于路由的（VTI）
 --------------------------
 
-Route based, also known as VTI, tunnels are using a virtual interface known as :code:`if_ipsec(4)`, which can be found under
-:menuselection:`VPN -> IPsec -> Virtual Tunnel Interfaces`. This links two ends of the communication for routing purposes
-after which normal routing applies. The "(Install) Policies" checkmark needs to be disabled in this case for the child (phase 1 in the legacy tunnel configuration)
-definition. Usually the communication policy (phase 2 or child) is set to match all traffic (either :code:`0.0.0.0/0` for IPv4 or :code:`::/0` for IPv6).
+基于路由的，也称为VTI，隧道使用称为:code:`if_ipsec(4)`的虚拟接口，可以在:menuselection:`VPN -> IPsec -> 虚拟隧道接口`下找到。
+这将通信的两端链接起来用于路由目的，之后应用正常的路由。
+在这种情况下，需要禁用“(安装) 策略”复选标记，对于子项（传统隧道配置中的第1阶段）定义。
+通常，通信策略（第2阶段或子项）设置为匹配所有流量（对于IPv4是:code:`0.0.0.0/0`，对于IPv6是:code:`::/0`）。
 
-So the same example as the policy based option would need (static) routes for the destinations in question (:code:`192.168.1.0/24` needs
-a route to :code:`192.168.2.0/24` and vice versa), peering happens over a small network in another subnet (for example :code:`10.0.0.1` <-> :code:`10.0.0.2`)
-bound to the tunnel interface.
+所以与基于策略的选项相同的示例需要为有关目的地配置（静态）路由
+（:code:`192.168.1.0/24`需要到:code:`192.168.2.0/24`的路由，反之亦然），
+对等连接发生在绑定到隧道接口的另一个子网中的小型网络上（例如:code:`10.0.0.1` <-> :code:`10.0.0.2`）。
 
-The advantage of this type of setup is one can use standard or advanced routing technologies to forward traffic around tunnels.
+这种设置的优点是可以使用标准或高级路由技术来转发隧道周围的流量。
 
-.. Note::
+.. 注意::
 
-    In order to filter traffic on the :code:`if_ipsec(4)` device some tunables need to be set. Both :code:`net.inet.ipsec.filtertunnel`
-    and :code:`net.inet6.ipsec6.filtertunnel` need to be set to :code:`1` and :code:`net.enc.in.ipsec_filter_mask` and :code:`net.enc.out.ipsec_filter_mask`
-    need to be set to :code:`0` in order to allow rules on the device. The downside is that policy based tunnels (:code:`enc0`) can not be filtered
-    anymore as this changes the behaviour from filtering on the :code:`enc0` device to the :code:`if_ipsec(4)` devices.
+为了在`:code:if_ipsec(4)`设备上过滤流量，需要设置一些可调参数。
+`:code:net.inet.ipsec.filtertunnel`和`:code:net.inet6.ipsec6.filtertunnel`需要被设置为`:code:1`，
+而`:code:net.enc.in.ipsec_filter_mask`和`:code:net.enc.out.ipsec_filter_mask`需要被设置为`:code:0`，以允许在设备上应用规则。
+缺点是基于策略的隧道(`:code:enc0`)无法再被过滤，因为这改变了从在`:code:enc0`设备上过滤的行为到`:code:if_ipsec(4)`设备的过滤。
 
-.. Warning::
+.. 警告::
 
-    Currently it does not seem to be possible to add NAT rules for :code:`if_ipsec(4)` devices.
+    目前似乎不可能为`:code:if_ipsec(4)`设备添加NAT规则。
 
-.. Warning::
+.. 警告::
 
-    In order to reliably setup a VTI tunnel, both ends should use static ip addresses. Although in the legacy configuration it
-    was possible to resolve hostnames, this will never lead to a stable configuration as the :code:`if_ipsec(4)` device
-    matches both source and destination `[#] <https://github.com/freebsd/freebsd-src/blob/c8ee75f2315e8267ad814dc5b4645ef205f0e0e1/sys/net/if_ipsec.c#L479>`__
-    before accepting the traffic and has no knowledge about any external changes.
+    为了可靠地设置VTI隧道，两端都应使用静态IP地址。
+    虽然在传统配置中可以解析主机名，但这永远不会导致稳定的配置，
+    因为`:code:if_ipsec(4)`设备在接受流量之前会匹配源和目的地，
+    对任何外部变化都没有知识。
 
-
-.................................
-Road Warriors / Mobile users
-.................................
-
-IPsec may also be used to service remote workers connecting to OPNsense from various clients, such as Windows, MacOS, iOS and Android.
-The type of client usually determines the authentication scheme(s) being used.
-
-In case clients should be offered default settings, these can be configured from :menuselection:`VPN -> IPsec -> Mobile Clients`.
-Pool options (Virtual IPvX Address Pool) on this page will be used by the legacy tunnel configuration only, when using the new connections
-module one may configure different pools per connection.
-
-The examples section contains various options available in OPNsense. When using the new "connections" option available
-as of OPNsense 23.1, different `examples from Strongswan <https://docs.strongswan.org/docs/5.9/interop/windowsClients.html>`__
-are usually quite easy to implement as we follow the `swantcl.conf <https://docs.strongswan.org/docs/5.9/swanctl/swanctlConf.html>`__
-format quite closely in the new module.
 
 .................................
-Examples
+移动用户 / 远程工作者
 .................................
 
-This paragraph offers examples for some commonly used implementation scenarios.
+IPsec也可用于服务连接到OPNsense的远程工作者，这些远程工作者使用各种客户端，
+如Windows、MacOS、iOS和Android。客户端类型通常决定了正在使用的认证方案。
 
-New > 23.1 (:menuselection:`VPN -> IPsec -> Connections`)
+如果应为客户端提供默认设置，这些可以从`:menuselection:VPN -> IPsec -> 移动客户端`配置。
+此页面上的池选项（虚拟IPvX地址池）仅由传统隧道配置使用，
+使用新的连接模块时，可以为每个连接配置不同的池。
+
+示例部分包含OPNsense中可用的各种选项。
+使用OPNsense 23.1起提供的新“连接”选项时，
+通常很容易实现不同的`Strongswan示例 <https://docs.strongswan.org/docs/5.9/interop/windowsClients.html>`__，
+因为我们在新模块中非常紧密地遵循`swanctl.conf <https://docs.strongswan.org/docs/5.9/swanctl/swanctlConf.html>`__格式。
+
+.................................
+示例
+.................................
+
+本段落提供了一些常用实施方案的示例。
+
+新版 > 23.1 (`VPN -> IPsec -> 连接`)
 ------------------------------------------------------------------------------
 
 .. toctree::
@@ -291,13 +291,13 @@ New > 23.1 (:menuselection:`VPN -> IPsec -> Connections`)
    how-tos/ipsec-swanctl-rw-ikev2-eap-mschapv2
 
 
-.. Tip::
+.. 提示::
 
-    The number of examples for the new module on our end is limited, but for inspiration it's often a good
-    idea to walkthrough the examples provided by `Strongswan <https://wiki.strongswan.org/projects/strongswan/wiki/UserDocumentation#Configuration-Examples>`__.
-    Quite some swanctl.conf examples are easy to implement in our new module as we do follow the same terminology.
+    我们这边为新模块提供的示例数量有限，但为了获得灵感，
+    通常浏览 `Strongswan <https://wiki.strongswan.org/projects/strongswan/wiki/UserDocumentation#Configuration-Examples>`__ 提供的示例是个好主意。
+    相当多的swanctl.conf示例在我们的新模块中容易实现，因为我们遵循相同的术语。
 
-Legacy (:menuselection:`VPN -> IPsec -> Tunnel Settings`)
+传统 (`VPN -> IPsec -> 隧道设置`)
 ------------------------------------------------------------------------------
 
 
@@ -312,7 +312,7 @@ Legacy (:menuselection:`VPN -> IPsec -> Tunnel Settings`)
    how-tos/ipsec-rw
 
 
-The following client setup examples are available in our documentation:
+我们文档中提供了以下客户端设置示例：
 
 .. toctree::
   :maxdepth: 2
@@ -323,68 +323,68 @@ The following client setup examples are available in our documentation:
   how-tos/ipsec-rw-w7
 
 
-.. Note::
+.. 注意::
 
- Using Network Address Translation in policy based tunnels is different, due to the fact that the installed IPsec policy
- should accept the traffic in order to encapsulate it. The `IPSec BINAT` document will explain how to apply translations.
+ 在基于策略的隧道中使用网络地址转换是不同的，因为安装的IPsec策略应该接受流量以便进行封装。
+ `IPSec BINAT`文档将解释如何应用转换。
 
 .................................
-Tuning considerations
+调优考虑
 .................................
 
-Depending on the workload (many different IPsec flows or a single flow), it might help to enable multithreaded crypto mode
-on :code:`ipsec`, in which case cryptographic packets are dispatched to multiple processors (especially when only a single
-tunnel is being used).
+根据工作负载（许多不同的IPsec流或单一流），
+启用`:code:ipsec`的多线程加密模式可能会有所帮助，在这种情况下，
+加密包被分派到多个处理器（特别是当只使用单个隧道时）。
 
-In order to do so, add or change the following tunable in :menuselection:`System --> Settings --> Tunables`:
+为此，在`:menuselection:系统 --> 设置 --> 可调参数`中添加或更改以下可调参数：
 
-.. Note::
+.. 注意::
 
     :code:`net.inet.ipsec.async_crypto` = **1**
 
-To distribute load better over available cores in the system, it may help to enable :doc:`receive side scaling </troubleshooting/performance>`.
-In which case the following tunables need to be changed:
+为了在系统中可用的核心上更好地分配负载，启用`:doc:接收侧扩展 </troubleshooting/performance>`可能会有所帮助。
+在这种情况下，需要更改以下可调参数：
 
-.. Note::
+.. 注意::
 
     * :code:`net.isr.bindthreads` = **1**
-    * :code:`net.isr.maxthreads` = **-1**   <-- equal the number of cores in the machine
+    * :code:`net.isr.maxthreads` = **-1**   <-- 等于机器中的核心数量
     * :code:`net.inet.rss.enabled` = **1**
-    * :code:`net.inet.rss.bits` = **X** <-- see :doc:`rss </troubleshooting/performance>` document.
+    * :code:`net.inet.rss.bits` = **X** <-- 见`:doc:rss </troubleshooting/performance>`文档。
 
 
 .................................
-Miscellaneous variables
+杂项变量
 .................................
 
-Path MTU Discovery
+路径MTU探测
 --------------------------
 
-When trying to enforce path mtu discovery (`PMTU <https://en.wikipedia.org/wiki/Path_MTU_Discovery>`__), you need to make
-sure packets leave the network with the :code:`DF` set. The kernel offers a tunable :code:`net.inet.ipsec.dfbit` which
-offers 3 options, :code:`0`, clear the bit on packets leaving the firewall (default), :code:`1`, set the DF bit or :code:`2`
-to copy the bit from the inner header.
+当尝试强制执行路径MTU探测（`PMTU <https://en.wikipedia.org/wiki/Path_MTU_Discovery>`__）时，
+您需要确保数据包带有`:code:DF`位离开网络。内核提供了一个可调参数`:code:net.inet.ipsec.dfbit`，
+它提供3个选项，`:code:0`，
+清除离开防火墙的数据包上的位（默认），`:code:1`，设置DF位，或`:code:2`从内部头复制该位。
 
 
 .................................
-Diagnostics
+诊断
 .................................
 
-In order to keep track of the connected tunnels, you can use the :menuselection:`VPN -> IPsec -> Status Overview`
-to browse through the configured tunnels.
+为了跟踪连接的隧道，
+您可以使用`:menuselection:VPN -> IPsec -> 状态概览`浏览配置的隧道。
 
-The :menuselection:`VPN -> IPsec -> Security Policy Database` is also practical to gain insights in the registered policies,
-when NAT is used, the additional SPD entries should be visible here as well.
+`:menuselection:VPN -> IPsec -> 安全策略数据库`也很实用，可以获得注册策略的洞察，
+当使用NAT时，这里也应该可见额外的SPD条目。
 
 
-When troubleshooting problems with your firewall, it is very likely you have to check
-the logs available on your system. In the UI of OPNsense, the log files are generally grouped
-with the settings of the component they belong to. The log files can be found in the "Log file" menu item.
+在对防火墙进行故障排除时，检查系统上可用的日志很可能是必需的。
+在OPNsense的UI中，日志文件通常与它们所属的组件的设置分组。
+可以在“日志文件”菜单项中找到日志文件。
 
-.. Tip::
+.. 提示::
 
-    When trying to debug various issues, the amount of log information gathered can be configured using the settings
-    in :menuselection:`VPN -> IPsec -> Advanced Settings`.
+    当尝试调试各种问题时，
+    可以通过`:menuselection:VPN -> IPsec -> 高级设置`中的设置配置收集的日志信息量。
 
 
 .................................

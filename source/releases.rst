@@ -1,5 +1,5 @@
 ====================================
-Releases
+版本发布
 ====================================
 
 .. image:: /development/images/ideas_join_the_development.jpg
